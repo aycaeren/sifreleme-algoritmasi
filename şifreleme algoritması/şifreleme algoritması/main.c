@@ -15,12 +15,12 @@ void sifreleme(char metin[], int anahtar) {
     for (i = 0; metin[i] != '\0';i++) {
         karakter= metin[i];
         
-        if (isalpha(karakter)) {
-            if(isupper(karakter)){
-                karakter=tolower(karakter);
-                karakter=(((karakter-'a')+anahtar) % 26)+'a';
+        if (isalpha(karakter)) { //harf olup olmadığını kontrol eder.
+            if(isupper(karakter)){ //büyük harf için
+                karakter=tolower(karakter); //büyük harfi küçük harfe çevirir.
+                karakter=(((karakter-'a')+anahtar) % 26)+'a'; //karakteri alfabede tutar ve öteler
             }
-            else if (islower(karakter)){
+            else if (islower(karakter)){ //küçük harf için
                 karakter=(((karakter-'a')+anahtar) % 26)+'a';
             }
             metin[i]=karakter;
@@ -29,7 +29,7 @@ void sifreleme(char metin[], int anahtar) {
     printf("Sifrelenmis metin: %s\n",metin);
 }
 void desifre(char metin[], int anahtar){
-    sifreleme(metin,26-anahtar);
+    sifreleme(metin,26-anahtar); //girilen şifreyi ilerlettiği kadar geri getirtir
 }
 
 int main() {
